@@ -1,0 +1,2 @@
+# Sweethome
+Manage home automation
