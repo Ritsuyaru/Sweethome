@@ -18,7 +18,7 @@ set(PROJECT_TEMPLATE_VERSION
         "${PROJECT_TEMPLATE_VERSION_MAJOR}.${PROJECT_TEMPLATE_VERSION_MINOR}.${PROJECT_TEMPLATE_VERSION_PATCH}")
 
 # Project options
-option(sweethome_enable_tests "Build unit tests" OFF)
+option(sweethome_enable_tests "Build unit tests" ON)
 
 # C++ dialect
 set(CMAKE_CXX_STANDARD 20)
@@ -27,12 +27,16 @@ set(CMAKE_CXX_STANDARD 20)
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 # Add Lib
-if (${dogmatics_core_enable_tests})
+include(add_fmt)
+include(add_spdlog)
+if (${sweethome_enable_tests})
   include(add_googletest)
 endif()
+add_subdirectory(third-party/yaml-cpp)
 
 # Add template project sources
 add_subdirectory(src)
-if (${dogmatics_core_enable_tests})
-  add_subdirectory(test)
+# add_subdirectory(conf)
+if (${sweethome_enable_tests})
+  add_subdirectory(tests)
 endif()
