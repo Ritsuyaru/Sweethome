@@ -1,0 +1,14 @@
+actuators:
+  - name: radiateur1
+    type: vanne
+    location: chambre1
+  - name: radiateur2
+    type: vanne
+    location: cuisine
+sensors:
+  - name: "s1"
+    type: "therm"
+    location: "chambre1"
+  - name: s2
+    type: therm
+    location: cuisine

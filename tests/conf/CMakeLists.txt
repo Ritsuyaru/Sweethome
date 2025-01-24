@@ -1,0 +1,1 @@
+configure_file("devices.yml" "devices.yml" ESCAPE_QUOTES)
