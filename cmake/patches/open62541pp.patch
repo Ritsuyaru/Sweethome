@@ -1,0 +1,22 @@
+diff --git a/3rdparty/open62541/CMakeLists.txt b/3rdparty/open62541/CMakeLists.txt
+--- a/3rdparty/open62541/CMakeLists.txt
++++ b/3rdparty/open62541/CMakeLists.txt
+@@ -593,7 +593,7 @@ endif()
+ # Linting during build #
+ ########################
+ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+-include(linting_build)
++#include(linting_build)
+ 
+ ######################
+ # External Libraries #
+@@ -1565,7 +1565,7 @@ endif()
+ ########################
+ # Linting as target    #
+ ########################
+-include(linting_target)
++#include(linting_target)
+ 
+ ##########################
+ # Installation           #
+

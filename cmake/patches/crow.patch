@@ -1,0 +1,18 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6c1dfc923..eb94abebf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -71,10 +71,11 @@ if(CROW_USE_BOOST)
+ 	)
+ 	target_compile_definitions(Crow INTERFACE CROW_USE_BOOST)
+ else()
+-    find_package(asio REQUIRED)
++    # find_package(asio REQUIRED)
+ 	target_link_libraries(Crow
+ 		INTERFACE
+-			asio::asio
++			# asio::asio
++			asio
+ 	)
+ endif()
+ 
