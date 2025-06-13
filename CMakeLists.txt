@@ -27,15 +27,21 @@ set(CMAKE_CXX_STANDARD 20)
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 
 # Add Lib
+add_subdirectory(third-party/yaml-cpp)
+# add_subdirectory(third-party/asio-1.30.2)
 include(add_fmt)
 include(add_spdlog)
+include(add_asio)
+include(add_crow)
+# find_package(Crow)
+# target_link_libraries(sweethome PUBLIC Crow::Crow)
 if (${sweethome_enable_tests})
   include(add_googletest)
 endif()
-add_subdirectory(third-party/yaml-cpp)
 
 # Add template project sources
 add_subdirectory(src)
+add_subdirectory(tools)
 # add_subdirectory(conf)
 if (${sweethome_enable_tests})
   add_subdirectory(tests)

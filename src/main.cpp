@@ -4,13 +4,19 @@
 #include <thread>
 #include <chrono>
 #include <spdlog/spdlog.h>
+#include <crow.h>
+// #include <asio.hpp>
 
 #include "settings.h"
+#include "endpoint.h"
+#include "endpoints/sensors_endpoint.h"
 // #include "sensors.h"
 
 
 int main(int argc, char ** argv)
 {
+    std::cout << "Version: " << __cplusplus << std::endl;
+
     const std::chrono::duration<float> time_sample_dt{2};
 
     const std::filesystem::path conf_folder{"conf/"};
@@ -36,13 +42,35 @@ int main(int argc, char ** argv)
         return optional_path.value();
     };
     
-    // std::cout << GetPath("yaml_sensors.yml").string() << std::endl;
     const std::filesystem::path devices_file_path = GetPath("devices.yml");
     if (devices_file_path.has_relative_path()) {
         spdlog::info("file path : {}", devices_file_path.string());
         sweethome::Settings setting{devices_file_path};
         setting.GetDevices("actuators");
     }
+
+
+    crow::SimpleApp app;
+
+    // CROW_ROUTE(app, "/temp")([](const crow::request& request) {
+    //     // spdlog::info("temp1");
+    //     crow::json::rvalue json = crow::json::load(request.body);
+    //     std::string temp = json["temperature"].s();
+    //     spdlog::info("temp: {}", temp);
+    //     // spdlog::info("value: {}", json["temperature"].s());
+    //     return crow::response(200);
+    // });
+
+    std::string prefix("temp/");
+    // sweethome::EndPoint ep(prefix);
+    // sweethome::Sensors sensors("")
+    // sweethome::SensorEndpoint s1_endpoint(s1);
+    // app.register_blueprint(ep.Blueprint());
+
+    app.port(3333).multithreaded().run();
+    
+    // app.port(3333).multithreaded().run_async();
+
     // Sensors sensors;
     // Commands command;
     // Communication communication;
@@ -53,12 +81,12 @@ int main(int argc, char ** argv)
 
     // Launch comm thread
 
-    // while (true)
-    // {
-    //     //control.Update();
-    //     std::cout << "Update" << std::endl;
-    //     std::this_thread::sleep_for(time_sample_dt);
-    // }
+    while (true)
+    {
+        //control.Update();
+        std::cout << "Update" << std::endl;
+        std::this_thread::sleep_for(time_sample_dt);
+    }
 
     return 0;
 }

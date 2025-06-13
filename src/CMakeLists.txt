@@ -1,5 +1,9 @@
 set(SRC_FILES
     settings.h settings.cpp
+    endpoint.h endpoint.cpp
+    endpoints/base_endpoint.h endpoints/base_endpoint.cpp
+    endpoints/sensors_endpoint.h endpoints/sensors_endpoint.cpp
+    endpoints/actuators_endpoint.h endpoints/actuators_endpoint.cpp
 )
 
 add_executable(sweethome

@@ -9,7 +9,6 @@ Settings::Settings(std::filesystem::path yaml_file)
 
 bool Settings::Load(std::filesystem::path yaml_file)
 {
-    // auto yaml_file = YAML::LoadFile(yaml_file.string());
     m_yaml_file = yaml_file;
     return false;
         
@@ -54,15 +53,6 @@ std::vector<Device> Settings::GetDevices(std::string type_device)
         device.location = actuator["location"].as<std::string>();
         devices.push_back(device);
     }
-    // search "actuator"
-    // auto Data_name = LoadStringFromNode(device_mappings, "name");
-    // for (const auto& templated_device_name : TemplatesForName(data_name)) {
-    //     std::cout << templated_device_name << std::endl;
-    //     // LoadActuator();
-    // }
-    // while(!device_actuators.end()) {
-    //     actuators.add(actuator)
-    // }
     return devices;
 }   
 

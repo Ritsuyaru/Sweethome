@@ -1,0 +1,17 @@
+meta {
+  name: temp1
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{host}}/temp
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "temperature": "20.3"
+  }
+}
