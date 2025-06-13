@@ -9,6 +9,7 @@
 
 #include "settings.h"
 #include "endpoint.h"
+#include "endpoints/sensors_endpoint.h"
 // #include "sensors.h"
 
 
@@ -62,9 +63,12 @@ int main(int argc, char ** argv)
 
     std::string prefix("temp/");
     // sweethome::EndPoint ep(prefix);
+    // sweethome::Sensors sensors("")
+    // sweethome::SensorEndpoint s1_endpoint(s1);
     // app.register_blueprint(ep.Blueprint());
 
     app.port(3333).multithreaded().run();
+    
     // app.port(3333).multithreaded().run_async();
 
     // Sensors sensors;
@@ -77,12 +81,12 @@ int main(int argc, char ** argv)
 
     // Launch comm thread
 
-    // while (true)
-    // {
-    //     //control.Update();
-    //     std::cout << "Update" << std::endl;
-    //     std::this_thread::sleep_for(time_sample_dt);
-    // }
+    while (true)
+    {
+        //control.Update();
+        std::cout << "Update" << std::endl;
+        std::this_thread::sleep_for(time_sample_dt);
+    }
 
     return 0;
 }
